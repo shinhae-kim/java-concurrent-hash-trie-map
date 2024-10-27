@@ -1517,6 +1517,7 @@ public class TrieMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K,
             if (hasNext ()) {
                 Map.Entry<K, V> r = null;
                 if (subiter != null) {
+		    System.out.println("=== NEXT EVENT TRIGGERED ===");
                     r = subiter.next ();
                     checkSubiter ();
                 } else {
