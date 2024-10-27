@@ -61,7 +61,7 @@ public class TestMultiThreadMapIterator {
             TestHelper.assertTrue (value instanceof String);
             count++;
         }
-        TestHelper.assertEquals (5000 + 2000 + 1000 + 100, count);
+        TestHelper.assertEquals (50000 + 2000 + 1000 + 100, count);
         
         final ConcurrentHashMap<Object, Object> removed = new ConcurrentHashMap<Object, Object> ();
 
