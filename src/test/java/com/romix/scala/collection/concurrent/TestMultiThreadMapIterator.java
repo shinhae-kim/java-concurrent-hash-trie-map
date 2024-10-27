@@ -34,6 +34,7 @@ public class TestMultiThreadMapIterator {
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
+			System.out.println("========== FIRST LOOP STARTS ==========");
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
                             final Entry<Object, Object> e = i.next ();
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
@@ -54,6 +55,7 @@ public class TestMultiThreadMapIterator {
         }
 
         count = 0;
+	System.out.println("========== SECOND LOOP STARTS ===========");
         for (final Map.Entry<Object, Object> kv : bt.entrySet ()) {
             Object value = kv.getValue (); 
             TestHelper.assertTrue (value instanceof String);
@@ -70,6 +72,7 @@ public class TestMultiThreadMapIterator {
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
+			System.out.println("=========== THIRD LOOP STARTS ===========");
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
                             final Entry<Object, Object> e = i.next ();
                             Object key = e.getKey ();
