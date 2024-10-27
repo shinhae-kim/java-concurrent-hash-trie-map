@@ -34,8 +34,10 @@ public class TestMultiThreadMapIterator {
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
+			System.out.println("[CUSTOM CODE] Start of a new run - " + threadNo);
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
                             final Entry<Object, Object> e = i.next ();
+			    System.out.println("Next entry: [KEY] " + e.getKey() + ", [VALUE] " + e.getValue());
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
                                 String newValue = "TEST:" + threadNo; 
                                 e.setValue (newValue);
