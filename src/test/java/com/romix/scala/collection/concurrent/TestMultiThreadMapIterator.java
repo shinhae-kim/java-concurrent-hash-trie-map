@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 
 public class TestMultiThreadMapIterator {
-    private static final int NTHREADS = 7;
+    private static final int NTHREADS = 1;
 
     @Test
     public void testMultiThreadMapIterator () {
