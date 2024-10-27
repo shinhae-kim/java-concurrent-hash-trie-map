@@ -34,10 +34,9 @@ public class TestMultiThreadMapIterator {
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
-			System.out.println("[CUSTOM CODE] Start of a new run - " + threadNo);
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
+			    System.out.println("First Iterator");
                             final Entry<Object, Object> e = i.next ();
-			    System.out.println("Next entry: [KEY] " + e.getKey() + ", [VALUE] " + e.getValue());
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
                                 String newValue = "TEST:" + threadNo; 
                                 e.setValue (newValue);
@@ -57,11 +56,12 @@ public class TestMultiThreadMapIterator {
 
         count = 0;
         for (final Map.Entry<Object, Object> kv : bt.entrySet ()) {
+	    System.out.println("Second Iterator");
             Object value = kv.getValue (); 
             TestHelper.assertTrue (value instanceof String);
             count++;
         }
-        TestHelper.assertEquals (50000 + 2000 + 1000 + 100, count);
+        TestHelper.assertEquals (5000w0 + 2000 + 1000 + 100, count);
         
         final ConcurrentHashMap<Object, Object> removed = new ConcurrentHashMap<Object, Object> ();
 
@@ -73,6 +73,7 @@ public class TestMultiThreadMapIterator {
                     @Override
                     public void run () {
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
+	    		    System.out.println("Three Iterator");
                             final Entry<Object, Object> e = i.next ();
                             Object key = e.getKey ();
                             if (accepts (threadNo, NTHREADS, key)) {
@@ -100,10 +101,12 @@ public class TestMultiThreadMapIterator {
 
         count = 0;
         for (final Object value : bt.keySet ()) {
+	    System.out.println("Four Iterator");
             value.toString ();
             count++;
         }
         for (final Object o : bt.keySet ()) {
+	    System.out.println("Fifth Iterator");
             if (!removed.contains (bt.get (o))) {
                 System.out.println ("Not removed: " + o);
             }
