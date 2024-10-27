@@ -35,7 +35,6 @@ public class TestMultiThreadMapIterator {
                     @Override
                     public void run () {
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
-			    System.out.println("First Iterator");
                             final Entry<Object, Object> e = i.next ();
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
                                 String newValue = "TEST:" + threadNo; 
@@ -56,7 +55,6 @@ public class TestMultiThreadMapIterator {
 
         count = 0;
         for (final Map.Entry<Object, Object> kv : bt.entrySet ()) {
-	    System.out.println("Second Iterator");
             Object value = kv.getValue (); 
             TestHelper.assertTrue (value instanceof String);
             count++;
@@ -73,7 +71,6 @@ public class TestMultiThreadMapIterator {
                     @Override
                     public void run () {
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
-	    		    System.out.println("Three Iterator");
                             final Entry<Object, Object> e = i.next ();
                             Object key = e.getKey ();
                             if (accepts (threadNo, NTHREADS, key)) {
@@ -101,12 +98,10 @@ public class TestMultiThreadMapIterator {
 
         count = 0;
         for (final Object value : bt.keySet ()) {
-	    System.out.println("Four Iterator");
             value.toString ();
             count++;
         }
         for (final Object o : bt.keySet ()) {
-	    System.out.println("Fifth Iterator");
             if (!removed.contains (bt.get (o))) {
                 System.out.println ("Not removed: " + o);
             }
