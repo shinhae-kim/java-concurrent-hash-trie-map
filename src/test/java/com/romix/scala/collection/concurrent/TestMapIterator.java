@@ -13,7 +13,6 @@ public class TestMapIterator {
     @Test
     public void testMapIterator () {
         for (int i = 0; i < 60 * 1000; i+= 400 + new Random ().nextInt (400)) {
-            System.out.println (i);
             final Map<Integer, Integer> bt = new TrieMap <Integer, Integer> ();
             for (int j = 0; j < i; j++) {
                 TestHelper.assertEquals (null, bt.put (Integer.valueOf (j), Integer.valueOf (j)));
