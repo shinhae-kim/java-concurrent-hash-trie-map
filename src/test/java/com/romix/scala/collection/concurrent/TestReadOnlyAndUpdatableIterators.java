@@ -1,5 +1,6 @@
 package com.romix.scala.collection.concurrent;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -120,6 +121,14 @@ public class TestReadOnlyAndUpdatableIterators {
             // It should not have generated an exception, because it is a non read-only iterator
             TestHelper.assertFalse (true);            
         }
+
+        ArrayList<String> al = new ArrayList<>();
+        al.add("A");
+        al.add("B");
+        al.add("C");
+
+        Iterator<String> it = al.iterator();
+	System.out.println(it.next() + it.next() + it.next());
 
         // All changes are done on the snapshot, not on the original map
         // Map size should remain unchanged
