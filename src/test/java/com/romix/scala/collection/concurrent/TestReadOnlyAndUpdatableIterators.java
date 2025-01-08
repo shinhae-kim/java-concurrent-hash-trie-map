@@ -122,7 +122,7 @@ public class TestReadOnlyAndUpdatableIterators {
             TestHelper.assertFalse (true);            
         }
 
-        ArrayList<String> al = new ArrayList<>();
+        ArrayList<String> al = new ArrayList<String>();
         al.add("A");
         al.add("B");
         al.add("C");
