@@ -122,14 +122,6 @@ public class TestReadOnlyAndUpdatableIterators {
             TestHelper.assertFalse (true);            
         }
 
-        ArrayList<String> al = new ArrayList<String>();
-        al.add("A");
-        al.add("B");
-        al.add("C");
-
-        Iterator<String> alIter = al.iterator();
-	System.out.println(alIter.next() + alIter.next() + alIter.next());
-
         // All changes are done on the snapshot, not on the original map
         // Map size should remain unchanged
         TestHelper.assertEquals (MAP_SIZE, bt.size ());
