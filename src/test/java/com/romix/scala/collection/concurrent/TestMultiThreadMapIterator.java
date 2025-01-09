@@ -33,8 +33,10 @@ public class TestMultiThreadMapIterator {
       		System.out.println ("Checkpoint - 1");  
                 final int threadNo = i;
                 es.execute (new Runnable () {
+      		    System.out.println ("Checkpoint - 1(1)");  
                     @Override
                     public void run () {
+      		        System.out.println ("Checkpoint - 1(2)");  
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
       			    System.out.println ("Checkpoint - 2");  
                             final Entry<Object, Object> e = i.next ();
