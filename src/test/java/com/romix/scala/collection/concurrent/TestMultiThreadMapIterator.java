@@ -32,6 +32,7 @@ public class TestMultiThreadMapIterator {
             for (int i = 0; i < NTHREADS; i++) {
       		System.out.println ("Checkpoint - 1");  
                 final int threadNo = i;
+      		System.out.println ("Checkpoint - 1(1)");  
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
@@ -48,6 +49,7 @@ public class TestMultiThreadMapIterator {
                 });
             }
 
+      	    System.out.println ("Checkpoint - 2(1)");  
             es.shutdown ();
             try {
       		System.out.println ("Checkpoint - 3");  
