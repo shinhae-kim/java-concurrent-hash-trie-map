@@ -1567,7 +1567,7 @@ public class TrieMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K,
                 current = (TNode<K, V>) m;
             } else if (m instanceof LNode) {
                 subiter = ((LNode<K, V>) m).listmap.iterator ();
-		System.out.println(Thread.currentThread().getId + " subiter updated");
+		System.out.println(Thread.currentThread().getId() + " subiter updated");
                 checkSubiter ();
             } else if (m == null) {
                 current = null;
@@ -1576,13 +1576,13 @@ public class TrieMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K,
 
         // @inline
         private void checkSubiter () {
-	    System.out.print(Thread.currentThread().getId + " subiter check: ");
+	    System.out.print(Thread.currentThread().getId() + " subiter check: ");
             if (!subiter.hasNext ()) {
 	        System.out.println("false");
                 subiter = null;
                 advance ();
             } else {
-	        System.out.println(true);
+	        System.out.println("true");
 	    }
         }
 
