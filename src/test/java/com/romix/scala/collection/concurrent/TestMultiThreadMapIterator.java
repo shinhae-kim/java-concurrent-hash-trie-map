@@ -35,9 +35,7 @@ public class TestMultiThreadMapIterator {
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
-      		        System.out.println (Thread.currentThread().getId() + " TestMultiThreadMapIterator.java:37");  
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
-      		            System.out.println (Thread.currentThread().getId() + " TestMultiThreadMapIterator.java:38");  
                             final Entry<Object, Object> e = i.next ();
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
                                 String newValue = "TEST:" + threadNo; 
@@ -55,7 +53,6 @@ public class TestMultiThreadMapIterator {
                 e.printStackTrace ();
             }
         }
-      	System.out.println ("Checkpoint - 4");  
 
         count = 0;
         for (final Map.Entry<Object, Object> kv : bt.entrySet ()) {
