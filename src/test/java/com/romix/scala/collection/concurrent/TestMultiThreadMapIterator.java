@@ -30,15 +30,13 @@ public class TestMultiThreadMapIterator {
         {
             final ExecutorService es = Executors.newFixedThreadPool (NTHREADS);
             for (int i = 0; i < NTHREADS; i++) {
-      		System.out.println ("Checkpoint - 1");  
                 final int threadNo = i;
-      		System.out.println ("Checkpoint - 1(1)");  
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
-      		        System.out.println ("Checkpoint - 1(2)");  
+      		        System.out.println ("TestMultiThreadMapIterator.java:37");  
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
-      			    System.out.println ("Checkpoint - 2");  
+      		            System.out.println ("TestMultiThreadMapIterator.java:38");  
                             final Entry<Object, Object> e = i.next ();
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
                                 String newValue = "TEST:" + threadNo; 
@@ -49,10 +47,8 @@ public class TestMultiThreadMapIterator {
                 });
             }
 
-      	    System.out.println ("Checkpoint - 2(1)");  
             es.shutdown ();
             try {
-      		System.out.println ("Checkpoint - 3");  
                 es.awaitTermination (3600L, TimeUnit.SECONDS);
             } catch (final InterruptedException e) {
                 e.printStackTrace ();
@@ -62,7 +58,6 @@ public class TestMultiThreadMapIterator {
 
         count = 0;
         for (final Map.Entry<Object, Object> kv : bt.entrySet ()) {
-      	    System.out.println ("Checkpoint - 5");  
             Object value = kv.getValue (); 
             TestHelper.assertTrue (value instanceof String);
             count++;
@@ -74,14 +69,11 @@ public class TestMultiThreadMapIterator {
         {
             final ExecutorService es = Executors.newFixedThreadPool (NTHREADS);
             for (int i = 0; i < NTHREADS; i++) {
-      	        System.out.println ("Checkpoint - 6");  
                 final int threadNo = i;
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
-      	        	    System.out.println ("Checkpoint - 7");  
-			    System.out.println("[next() called]");
                             final Entry<Object, Object> e = i.next ();
                             Object key = e.getKey ();
                             if (accepts (threadNo, NTHREADS, key)) {
@@ -101,7 +93,6 @@ public class TestMultiThreadMapIterator {
 
             es.shutdown ();
             try {
-      	        System.out.println ("Checkpoint - 8");  
                 es.awaitTermination (3600L, TimeUnit.SECONDS);
             } catch (final InterruptedException e) {
                 e.printStackTrace ();
@@ -110,12 +101,10 @@ public class TestMultiThreadMapIterator {
 
         count = 0;
         for (final Object value : bt.keySet ()) {
-      	    System.out.println ("Checkpoint - 9");  
             value.toString ();
             count++;
         }
         for (final Object o : bt.keySet ()) {
-      	    System.out.println ("Checkpoint - 10");  
             if (!removed.contains (bt.get (o))) {
                 System.out.println ("Not removed: " + o);
             }

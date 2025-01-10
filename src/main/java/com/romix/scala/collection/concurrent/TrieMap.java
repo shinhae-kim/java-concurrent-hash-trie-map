@@ -1518,7 +1518,7 @@ public class TrieMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K,
                 Map.Entry<K, V> r = null;
                 if (subiter != null) {
                     r = subiter.next ();
-		    System.out.println("  -> Key: " + r.getKey() + ", Value: " + r.getValue());
+		    System.out.println("TrieMap.java:1520");
                     checkSubiter ();
                 } else {
                     r = current.kvPair ();
@@ -1567,6 +1567,7 @@ public class TrieMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K,
                 current = (TNode<K, V>) m;
             } else if (m instanceof LNode) {
                 subiter = ((LNode<K, V>) m).listmap.iterator ();
+		System.out.println("TrieMap.java:1568");
                 checkSubiter ();
             } else if (m == null) {
                 current = null;
@@ -1575,6 +1576,7 @@ public class TrieMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K,
 
         // @inline
         private void checkSubiter () {
+	    System.out.println("TrieMap.java:1578");
             if (!subiter.hasNext ()) {
                 subiter = null;
                 advance ();
