@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Thread;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 
 public class TestMultiThreadMapIterator {
-    private static final int NTHREADS = 1;
+    private static final int NTHREADS = 7;
 
     @Test
     public void testMultiThreadMapIterator () {
@@ -34,9 +35,9 @@ public class TestMultiThreadMapIterator {
                 es.execute (new Runnable () {
                     @Override
                     public void run () {
-      		        System.out.println ("TestMultiThreadMapIterator.java:37");  
+      		        System.out.println (Thread.currentThread().getId() + " TestMultiThreadMapIterator.java:37");  
                         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
-      		            System.out.println ("TestMultiThreadMapIterator.java:38");  
+      		            System.out.println (Thread.currentThread().getId() + " TestMultiThreadMapIterator.java:38");  
                             final Entry<Object, Object> e = i.next ();
                             if (accepts (threadNo, NTHREADS, e.getKey ())) {
                                 String newValue = "TEST:" + threadNo; 
