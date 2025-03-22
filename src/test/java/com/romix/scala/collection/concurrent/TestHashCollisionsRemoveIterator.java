@@ -23,11 +23,11 @@ public class TestHashCollisionsRemoveIterator {
             final Object key = e.getKey ();
 	    bt.put(key, e.getValue());
             list.add (key);
-            // i.remove ();
+            i.remove ();
         }
 
-        // TestHelper.assertEquals (0, bt.size ());
-        // TestHelper.assertTrue (bt.isEmpty ());
-        TestHelper.assertTrue (true);
+        TestHelper.assertEquals (0, bt.size ());
+        TestHelper.assertTrue (bt.isEmpty ());
+        // TestHelper.assertTrue (true);
     }
 }
