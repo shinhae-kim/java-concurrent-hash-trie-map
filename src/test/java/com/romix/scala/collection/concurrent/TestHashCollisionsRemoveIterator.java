@@ -21,6 +21,7 @@ public class TestHashCollisionsRemoveIterator {
         for (final Iterator<Map.Entry<Object, Object>> i = bt.entrySet ().iterator (); i.hasNext ();) {
             final Entry<Object, Object> e = i.next ();
             final Object key = e.getKey ();
+	    bt.put(key, e.getValue());
             list.add (key);
             i.remove ();
         }
